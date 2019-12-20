@@ -30,6 +30,26 @@ const Login = props => {
     <>
       <h1>Welcome to the Bubble App!</h1>
       <p>Build a login page here</p>
+      <div className="loginForm">
+        <form onSubmit={login}>
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            value={credentials.username}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={credentials.password}
+            onChange={handleChange}
+          />
+          <button type="submit">Log in</button>
+          {/* {isFetching && "...logging in"} */}
+        </form>
+      </div>
     </>
   );
 };
