@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "./utils/axiosWithAuth";
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -10,15 +10,15 @@ const Login = props => {
 
   const handleChange = e =>
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  console.log(credentials, "handleChange");
+  // console.log(credentials, "handleChange");
 
   const login = e => {
     e.preventDefault();
-    console.log(credentials, "creds");
+    // console.log(credentials, "creds");
     axiosWithAuth()
       .post("/login", credentials)
       .then(res => {
-        console.log(res, "response");
+        console.log(res.data, "response");
         localStorage.setItem("token", res.data.payload);
         props.history.push("/protected");
       })
