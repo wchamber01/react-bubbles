@@ -12,6 +12,19 @@ const Login = props => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   console.log(credentials, "handleChange");
 
+  const login = e => {
+    e.preventDefault();
+    console.log(credentials, "creds");
+    axiosWithAuth()
+      .post("/login", credentials)
+      .then(res => {
+        console.log(res, "response");
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected");
+      })
+      .catch(err => console.log(err));
+  };
+
   // when you have handled the token, navigate to the BubblePage route
   return (
     <>
